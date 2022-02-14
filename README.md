@@ -14,6 +14,7 @@ SciKit: https://scikit-learn.org/stable/install.html
 
 
 Python IDE:
+
 https://www.jetbrains.com/pycharm/
 
 https://code.visualstudio.com/
