@@ -4,6 +4,7 @@ Initial testing of pyplot, kmeans clustering, and JSON loading of materials.
 
 
 Requirements:
+
 Python: https://www.python.org/downloads/
 
 MatPlot: https://matplotlib.org/stable/users/installing/index.html
