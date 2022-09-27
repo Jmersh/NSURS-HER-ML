@@ -18,7 +18,11 @@ M_mat = ([["Ti"],
           ["Ru"],
           ["Fe"],
           ["Ni"],
-          ["Rh"]])
+          ["Rh"],
+          ["Os"],
+          ["Co"],
+          ["Ir"],
+          ["Re"]])
 X_Mat = ([["B"],
           ["N"],
           ["C"]])
@@ -36,7 +40,7 @@ for M_MatN2 in M_mat:
         continue
 for M_MatN2 in M_mat:
     for X_MatN2 in X_Mat:
-        print(M_MatN2, "2", X_MatN2)
+        print(M_MatN2, MatGen.py"2", X_MatN2)
         continue
 for M_MatN2 in M_mat:
     for X_MatN2 in X_Mat:
