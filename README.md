@@ -25,6 +25,8 @@ SciPy: https://scipy.org/install/
 
 SciKit: https://scikit-learn.org/stable/install.html
 
+https://pymatgen.org/
+
 
 Python IDE:
 
