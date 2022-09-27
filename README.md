@@ -2,6 +2,12 @@
 
 Initial testing of pyplot, kmeans clustering, and JSON loading of materials.
 
+To-Do:
+Work on MatGenTest.py to generate Material List with descriptors (use periodic table library or create classes)
+Export Material List as CSV
+Load CSV into pandas or numpy
+Check association values between descriptors
+
 
 Requirements:
 
