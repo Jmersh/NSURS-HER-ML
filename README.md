@@ -4,14 +4,13 @@ Initial testing of pyplot, kmeans clustering, and JSON loading of materials.
 
 To-Do:
 
+[ ] install pymatgen & mp-api and extend descriptors
 
-[ ] Work on MatGenTest.py to generate Material List with descriptors (use periodic table library or create classes)
-
-[ ] Export Material List as CSV
-
-[ ] Load CSV into pandas or numpy
+[ X ] Load CSV into pandas or numpy
 
 [ ] Check association values between descriptors
+
+[ ] Experiment with multidimensional scaling
 
 
 
