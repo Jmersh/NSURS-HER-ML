@@ -1,5 +1,6 @@
 import pymatgen
-from elements.elements import Fe
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
 from sklearn.manifold import MDS
 import matplotlib.pyplot as plt
 import sklearn.datasets as dt
@@ -9,8 +10,12 @@ from sklearn.metrics.pairwise import manhattan_distances, euclidean_distances
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import pandas as pd
 
-TestData = "MatGenOutput.csv"  # Declare CSV file to be used in pandas dataframe
-pdtest = pd.read_csv(TestData)  # draws dataframe from CSV
-print(pdtest)  # prints dataframe from pandas
+# Declare CSV file to be used in pandas dataframe
+TestData = "MatGenOutput.csv"
 
-print(pymatgen.core.periodic_table.ElementBase(Fe).electron_affinity)
+# draws dataframe from CSV
+pdarray = pd.read_csv(TestData, index_col=[0],  usecols=[0, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 , 14, 15, 16, 17, 18, 19, 20, 21, 22])
+
+# prints dataframe from pandas
+print(pdarray)
+print(pdarray.shape)
