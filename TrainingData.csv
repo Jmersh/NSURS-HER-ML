@@ -1,0 +1,183 @@
+,M,X
+Co2B1,Co,B
+Cr2B1,Cr,B
+Fe2B1,Fe,B
+Hf2B1,Hf,B
+Ir2B1,Ir,B
+Mn2B1,Mn,B
+Mo2B1,Mo,B
+Nb2B1,Nb,B
+Ni2B1,Ni,B
+Os2B1,Os,B
+Pd2B1,Pd,B
+Pt2B1,Pt,B
+Re2B1,Re,B
+Rh2B1,Rh,B
+Ru2B1,Ru,B
+Sc2B1,Sc,B
+Ta2B1,Ta,B
+Tc2B1,Tc,B
+Ti2B1,Ti,B
+V2B1,V,B
+W2B1,W,B
+Y2B1,Y,B
+Zr2B1,Zr,B
+Co2B2,Co,B
+Cr2B2,Cr,B
+Fe2B2,Fe,B
+Hf2B2,Hf,B
+Ir2B2,Ir,B
+Mn2B2,Mn,B
+Mo2B2,Mo,B
+Nb2B2,Nb,B
+Ni2B2,Ni,B
+Os2B2,Os,B
+Pd2B2,Pd,B
+Pt2B2,Pt,B
+Re2B2,Re,B
+Rh2B2,Rh,B
+Ru2B2,Ru,B
+Sc2B2,Sc,B
+Ta2B2,Ta,B
+Tc2B2,Tc,B
+Ti2B2,Ti,B
+V2B2,V,B
+W2B2,W,B
+Y2B2,Y,B
+Zr2B2,Zr,B
+Cr4C3 ,Cr,C
+Hf4C3 ,Hf,C
+Mo4C3 ,Mo,C
+Nb4C3 ,Nb,C
+Sc4C3 ,Sc,C
+Ta4C3 ,Ta,C
+Ti4C3 ,Ti,C
+V4C3,V,C
+W4C3,W,C
+Y4C3,Y,C
+Zr4C3,Zr,C
+Cr3C2 ,Cr,C
+Hf3C2 ,Hf,C
+Mo3C2 ,Mo,C
+Nb3C2 ,Nb,C
+Sc3C2 ,Sc,C
+Ta3C2 ,Ta,C
+Ti3C2 ,Ti,C
+V3C2,V,C
+W3C2,W,C
+Y3C2,Y,C
+Zr3C2,Zr,C
+Cr2C ,Cr,C
+Hf2C ,Hf,C
+Mo2C ,Mo,C
+Nb2C ,Nb,C
+Sc2C ,Sc,C
+Ta2C ,Ta,C
+Ti2C ,Ti,C
+V2C,V,C
+W2C,W,C
+Y2C,Y,C
+Zr2C,Zr,C
+Cr4N3 ,Cr,N
+Hf4N3 ,Hf,N
+Mo4N3 ,Mo,N
+Nb4N3 ,Nb,N
+Sc4N3 ,Sc,N
+Ta4N3 ,Ta,N
+Ti4N3 ,Ti,N
+V4N3,V,N
+W4N3,W,N
+Y4N3,Y,N
+Zr4N3,Zr,N
+Cr3N2 ,Cr,N
+Hf3N2 ,Hf,N
+Mo3N2 ,Mo,N
+Nb3N2 ,Nb,N
+Sc3N2 ,Sc,N
+Ta3N2 ,Ta,N
+Ti3N2 ,Ti,N
+V3N2,V,N
+W3N2,W,N
+Y3N2,Y,N
+Zr3N2,Zr,N
+Cr2N ,Cr,N
+Hf2N ,Hf,N
+Mo2N ,Mo,N
+Nb2N ,Nb,N
+Sc2N ,Sc,N
+Ta2N ,Ta,N
+Ti2N ,Ti,N
+V2N,V,N
+W2N,W,N
+Y2N,Y,N
+Zr2N,Zr,N
+NbFe1,Nb,Fe
+NbRu1,Nb,Ru
+TaNi2,Ta,Ni
+CrY1,Cr,Y
+TaV1,Ta,V
+CrZr1,Cr,Zr
+FeSc1,Fe,Sc
+PdV2,Pd,V
+HfPt1,Hf,Pt
+FeMn1,Fe,Mn
+NbMo1,Nb,Mo
+HfRe2,Hf,Re
+VTi2,V,Ti
+MnY1,Mn,Y
+CoMn1,Co,Mn
+VY1,V,Y
+TiPt1,Ti,Pt
+MnSc1,Mn,Sc
+HfPt2,Hf,Pt
+NiPt1,Ni,Pt
+TaHf2,Ta,Hf
+VHf2,V,Hf
+TiMo1,Ti,Mo
+HfOs2,Hf,Os
+YRu1,Y,Ru
+FeW1,Fe,W
+YIr2,Y,Ir
+MnRh1,Mn,Rh
+ScRu1,Sc,Ru
+NiCr2,Ni,Cr
+NbV2,Nb,V
+HfNb1,Hf,Nb
+CrIr2,Cr,Ir
+MnRu2,Mn,Ru
+MnPt1,Mn,Pt
+CoRh1,Co,Rh
+TaOs1,Ta,Os
+YFe1,Y,Fe
+CoTi1,Co,Ti
+CrFe1,Cr,Fe
+YV1,Y,V
+HfY2,Hf,Y
+VMo1,V,Mo
+MoCr1,Mo,Cr
+WCo2,W,Co
+NbIr1,Nb,Ir
+ScV1,Sc,V
+YNi1,Y,Ni
+WV1,W,V
+PdCr2,Pd,Cr
+TcTa1,Tc,Ta
+FeTi2,Fe,Ti
+TaSc1,Ta,Sc
+YW1,Y,W
+TcMn2,Tc,Mn
+HfZr2,Hf,Zr
+CrNi1,Cr,Ni
+NbTc2,Nb,Tc
+MoTa1,Mo,Ta
+YZr1,Y,Zr
+PdMn2,Pd,Mn
+ScOs2,Sc,Os
+TiFe1,Ti,Fe
+MoRu1,Mo,Ru
+FeY1,Fe,Y
+TaNb1,Ta,Nb
+TiTc2,Ti,Tc
+VPt2,V,Pt
+TcPt1,Tc,Pt
+CoOs1,Co,Os
