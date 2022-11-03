@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import sklearn
+from IPython.core.display_functions import display
 from sklearn.linear_model import RidgeCV
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVR
@@ -145,6 +147,7 @@ print('MLPR root mean squared error:', mlprrmse)
 class GenModel:
     TotalTraining = pd.DataFrame(columns=['Tr Predicted E', 'Tr Actual E'])
     TotalTesting = pd.DataFrame(columns=['Te Predicted E', 'Te Actual E'])
+    Totalrmse = pd.DataFrame(columns=['Training RMSE', 'Testing RMSE'])
 
     def __init__(self, model):
         for ModelN in range(10):
@@ -168,19 +171,35 @@ class GenModel:
             TeGM_actual_vs_predicted = pd.concat([TeGMacte, TeGMprede], axis=1)
             self.TotalTesting = pd.concat([self.TotalTesting, TeGM_actual_vs_predicted], axis=0)
             TeGMrmse = np.sqrt(mean_squared_error(TeGMprede, TeGMacte))
+
+            self.Totalrmse.loc[len(self.Totalrmse.index)] = [TrGMrmse, TeGMrmse]
             continue
 
     def ReturnArray(self, model):
-        print(self.TotalTraining)
-        print(self.TotalTesting)
+        # printing arrays for debug
+        # print(self.TotalTraining)
+        # print(self.TotalTesting)
 
-        print('Model:', model, 'Training Root Mean Squared Error:',
-              np.sqrt(mean_squared_error(self.TotalTraining.iloc[0], self.TotalTraining.iloc[1])))
-        print('Model:', model, 'Testing Root Mean Squared Error:',
-              np.sqrt(mean_squared_error(self.TotalTesting.iloc[0], self.TotalTesting.iloc[1])))
+        self.Totalrmse.loc['mean'] = self.Totalrmse.mean()
+        # print(self.Totalrmse)
+
+        # print model completion
+        print(model, 'generation complete.')
+        # saving arrays for future use
+        self.TotalTraining.to_csv('Models/' + model + '/TrainArray.csv', index=False)
+        self.TotalTesting.to_csv('Models/' + model + '/TestArray.csv', index=False)
+        self.Totalrmse.to_csv('Models/' + model + '/RMSEArray.csv', index=False)
+        print(model, 'arrays saved.')
+
+
+        # print('Model:', model, 'Training Root Mean Squared Error:',
+        #      np.sqrt(mean_squared_error(self.TotalTraining.iloc[0], self.TotalTraining.iloc[1])))
+        # print('Model:', model, 'Testing Root Mean Squared Error:',
+        #      np.sqrt(mean_squared_error(self.TotalTesting.iloc[0], self.TotalTesting.iloc[1])))
 
 
 GenModel(RidgeCV()).ReturnArray("RidgeCV")
+
 
 # # To do: loop training and prediction 10 times, redo LearningModelGel with classes, add prediction and use split
 # training data, graphs, predict our MatGenOutput and create array or graph, statistics.
