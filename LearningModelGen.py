@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import pandas as pd
 import sklearn
@@ -186,6 +188,10 @@ class GenModel:
         # print model completion
         print(model, 'generation complete.')
         # saving arrays for future use
+        isExist = os.path.exists('Models/' + model)
+        if not isExist:
+            # Create a new directory because it does not exist
+            os.makedirs('Models/' + model)
         self.TotalTraining.to_csv('Models/' + model + '/TrainArray.csv', index=False)
         self.TotalTesting.to_csv('Models/' + model + '/TestArray.csv', index=False)
         self.Totalrmse.to_csv('Models/' + model + '/RMSEArray.csv', index=False)
