@@ -115,14 +115,16 @@ gprkernel = DotProduct() + WhiteKernel()
 gpr = GaussianProcessRegressor(kernel=gprkernel, random_state=0).fit(X, Y)
 GenModel(gpr, 1).ReturnArray("GPR")
 
-dtr = tree.DecisionTreeRegressor()
+dtr = tree.DecisionTreeRegressor(max_depth=7)
 GenModel(dtr, 1).ReturnArray("DTR")
 
-rfr = RandomForestRegressor()
+rfr = RandomForestRegressor(max_depth=20)
 GenModel(rfr, 1).ReturnArray("RFR")
 
-mlpr = MLPRegressor(random_state=1, max_iter=500)
+mlpr = MLPRegressor(random_state=1, max_iter=5000, solver='lbfgs')
 GenModel(mlpr, 1).ReturnArray("MLPR")
 
-# # To do:  graphs, predict our MatGenOutput and create array or graph, statistics.
+# # To do:   predict our MatGenOutput and create array or graph, statistics.
 # graph of number of iterations vs accuracy
+# fix decision tree depth, maybe relate to RFR depth
+# fix perceptron, perhaps solver=lbfgs
