@@ -1,6 +1,28 @@
-# NSURSUnsuperTest
+# NSURS-HER-ML
 
 As of 11/7/2022 this project is baseline operational.
+
+Purpose:
+For use in undergraduate project titled
+
+"Screening of Highly Active Hydrogen Evolution Reaction Catalysts: Comparative Analysis of Typical Machine Learning Methods"
+
+This project generates a CSV of materials, imports training data, builds models with the training data, compares the models, and predict materials.
+
+
+Features:
+
+Generates CSV of materials with descriptors to later predict
+
+Trains models and saves outputs to CSV
+
+Generates statistics on models
+
+Generates graphs for models
+
+Other cool stuff I am forgetting
+
+
 
 To-Do:
 
@@ -17,6 +39,10 @@ To-Do:
 [ ] Automate final steps (screen predicted energy for value range)
 
 [ ] Add examples of what project can do
+
+[ ] Add project paper and presentation to Github
+
+[ ] Finish a ton of stuff
 
 
 
