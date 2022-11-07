@@ -5,9 +5,13 @@ import numpy as np
 import warnings
 import matplotlib.lines as mlines
 import matplotlib.transforms as mtransforms
+from matplotlib.patches import Rectangle
+import warnings
+
+warnings.filterwarnings('ignore')
+
 
 modelset = ('DTR', 'GPR', 'KRR', 'MLPR', 'OLS', 'RFR', 'RidgeCV', 'SVR')
-
 
 
 def plotdata(model):
@@ -19,14 +23,14 @@ def plotdata(model):
     ax.scatter([traindata.iloc[:, 0]], [traindata.iloc[:, 1]], color='green', marker='s', edgecolors='white', alpha=0.8)
     ax.legend(['Testing Data', 'Training Data'])
     plt.axis([-1.5, 0.5, -1.5, 0.5])
-    plt.title(model + " Pred E vs Actual E", pad=15)
-    plt.xlabel("Predicted E")
-    plt.ylabel("Actual E")
+    plt.title(model + " Pred ΔG vs Actual ΔG", pad=15)
+    plt.xlabel("Predicted ΔG")
+    plt.ylabel("Actual ΔG")
     line = mlines.Line2D([0, 1], [0, 1], color='red', linestyle='dashed')
     transform = ax.transAxes
     line.set_transform(transform)
     ax.add_line(line)
-    circlehighlight = plt.Circle((0, 0), 0.125, color='r', fill=False)
+    circlehighlight = plt.Circle((0, 0), 0.15, color='r', fill=False)
     plt.gca().add_patch(circlehighlight)
     plt.savefig('Models/' + model + '/TrainVSTest.png')
     plt.show()
@@ -56,6 +60,21 @@ def autormse():
     plt.show()
 
 
+def plotpred(model):
+    preddata = pd.read_csv('Models/' + model + '/MatGenArray.csv')
+    fig, ax = plt.subplots()
+    x = preddata.iloc[:, 0]
+    y = preddata.iloc[:, 1]
+    # ax.scatter([preddata.iloc[:, 0]], [preddata.iloc[:, 1]], color='blue', edgecolors='white', alpha=0.8)
+    ax.plot(x, y)
+    plt.xlabel("Material Number")
+    plt.ylabel("Predicted ΔG")
+    plt.title(model + " Material Number vs Predicted ΔG", pad=15)
+    ax.add_patch(Rectangle(xy=(0, -0.15), width=300, height=0.30, linewidth=1, color='red', fill=False))
+    plt.show()
+
+
+
 plotdata('DTR')
 plotdata('GPR')
 plotdata('KRR')
@@ -73,3 +92,6 @@ plotrmse('OLS')
 plotrmse('RFR')
 plotrmse('RidgeCV')
 plotdata('SVR')
+
+plotpred('RFR')
+
