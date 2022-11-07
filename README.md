@@ -67,7 +67,9 @@ https://code.visualstudio.com/
 
 https://www.simplilearn.com/tutorials/python-tutorial/python-ide
 
-Training Data from
+Training Data from:
+
+Gibbs Free Energy values and names of materials used. Other descriptors are generated from project.
 
 Sun, X.; Zheng, J.; Gao, Y.; Qiu, C.; Yan, Y.; Yao, Z.; Deng, S.; Wang, J. Machine-Learning-Accelerated Screening of Hydrogen Evolution Catalysts in MBenes Materials. Applied Surface Science 2020, 526, 146522. https://doi.org/10.1016/j.apsusc.2020.146522. (LICENSE DOES NOT APPLY TO THIS DATA)
 
