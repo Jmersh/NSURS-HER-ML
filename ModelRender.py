@@ -10,9 +10,10 @@ import warnings
 
 warnings.filterwarnings('ignore')
 
-
 modelset = ('DTR', 'GPR', 'KRR', 'MLPR', 'OLS', 'RFR', 'RidgeCV', 'SVR')
 
+
+# Function portion of code. These are built to automate features.
 
 def plotdata(model):
     testdata = pd.read_csv('Models/' + model + '/TestArray.csv')
@@ -74,6 +75,8 @@ def plotpred(model):
     plt.show()
 
 
+# Calling functions portion of code. This should eventually be automated to request a model list
+# and iterate through that list with the functions you'd like.
 
 plotdata('DTR')
 plotdata('GPR')
@@ -94,4 +97,3 @@ plotrmse('RidgeCV')
 plotdata('SVR')
 
 plotpred('RFR')
-
