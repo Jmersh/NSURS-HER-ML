@@ -1,96 +1,60 @@
 # NSURS-HER-ML
 
-As of 11/7/2022 this project is baseline operational.
+**UPDATE: As of 5/2/2023, this project is almost fully operational with minimal script changes needed**
 
-Purpose:
-For use in undergraduate project titled
+## Purpose
 
-"Screening of Highly Active Hydrogen Evolution Reaction Catalysts: Comparative Analysis of Typical Machine Learning Methods"
+Welcome to the NSURS-HER-ML project! This repository is part of an undergraduate project titled "Screening of Highly Active Hydrogen Evolution Reaction Catalysts: Comparative Analysis of Typical Machine Learning Methods". You can read my paper and check out my presentation on this GitHub as well.
 
-You can read my paper and check out my presentation on this github as well.
+## Features
 
+The NSURS-HER-ML project provides several features to make it easy for you to generate materials data, import training data, build models, compare models, and predict materials. Some of the key features of this project are:
 
-This project generates a CSV of materials, imports training data, builds models with the training data, compares the models, and predict materials.
+- Generate a CSV of materials with descriptors to later predict
+- Train models and save outputs to CSV
+- Generate statistics and graphs for models
+- Import descriptors from materials database
+- TPOT and Ludwig Auto-ML pipeline
 
+## To-Do
 
-Features:
+We are continuously improving the NSURS-HER-ML project to make it more efficient and user-friendly. Some of the tasks we are currently working on include:
 
-Generates CSV of materials with descriptors to later predict
+- Check association values between descriptors
+- Optimize models
+- Add more comments
+- Add examples of what project can do
 
-Trains models and saves outputs to CSV
+## Requirements
 
-Generates statistics on models
+To use the NSURS-HER-ML project, you need to have the following software installed:
 
-Generates graphs for models
+- [Python](https://www.python.org/downloads/)
+- [Matplotlib](https://matplotlib.org/stable/users/installing/index.html)
+- [SciPy](https://scipy.org/install/)
+- [Scikit-Learn](https://scikit-learn.org/stable/install.html)
+- [Pymatgen](https://pymatgen.org/)
+- [Pandas](https://pandas.pydata.org/docs/getting_started/install.html)
+- [TPOT](https://github.com/EpistasisLab/tpot)
+- [Ludwig](https://ludwig-ai.github.io/ludwig-docs/getting_started/install/)
+- [periodictable](https://github.com/pkienzle/periodictable)
+- [PyTorch](https://pytorch.org/get-started/locally/)
 
-Imports descriptors from materials database
+You also need to have a Python IDE installed. Here are some popular options:
 
-TPOT and Ludwig Auto-ML pipeline
+- [PyCharm](https://www.jetbrains.com/pycharm/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Simplilearn](https://www.simplilearn.com/tutorials/python-tutorial/python-ide)
 
+## Training Data
 
-
-To-Do:
-
-[ ] Check association values between descriptors
-
-[ ] Optimize models
-
-[ ] Add more comments
-
-[ ] Add examples of what project can do
-
-
-
-
-Requirements:
-
-Python: https://www.python.org/downloads/
-
-MatPlot: https://matplotlib.org/stable/users/installing/index.html
-
-SciPy: https://scipy.org/install/
-
-SciKit: https://scikit-learn.org/stable/install.html
-
-https://pymatgen.org/
-
-
-Python IDE:
-
-https://www.jetbrains.com/pycharm/
-
-https://code.visualstudio.com/
-
-https://www.simplilearn.com/tutorials/python-tutorial/python-ide
-
-Training Data from:
-
-Gibbs Free Energy values and names of materials used. Other descriptors are generated from project.
+The training data for this project includes Gibbs Free Energy values and names of materials used. Other descriptors are generated from the project. The data was sourced from the following publication:
 
 Sun, X.; Zheng, J.; Gao, Y.; Qiu, C.; Yan, Y.; Yao, Z.; Deng, S.; Wang, J. Machine-Learning-Accelerated Screening of Hydrogen Evolution Catalysts in MBenes Materials. Applied Surface Science 2020, 526, 146522. https://doi.org/10.1016/j.apsusc.2020.146522. (LICENSE DOES NOT APPLY TO THIS DATA)
 
+## License
 
-License:
-
-MIT License
+The NSURS-HER-ML project is licensed under the MIT License. This means that you are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. However, the license only applies to the software and associated documentation files. Any training data used in this project has its own separate license. Please refer to the source of the data for information on its license.
 
 Copyright (c) 2022 Jordan Mershimer
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
