@@ -23,12 +23,12 @@ from inspect import signature
 from sklearn.pipeline import make_pipeline
 import time
 
-# Load csv files of training data and data you'd like to predict.
+# Load training data and data to be predicted from csv files
 
 TrainData = pd.read_csv('TrainData.csv', index_col=[0])
 MatGenData = pd.read_csv('MatGenOutput.csv', index_col=[0])
 
-# Choose which columns you'd like to use as your X and Y variables.
+# Select the columns to be used as X and Y variables
 
 X = TrainData.iloc[:, [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]
 Y = TrainData.values[:, 22]
@@ -39,15 +39,15 @@ XMat = MatGenData.iloc[:, [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1
 # Y = TrainData.values[:, 23]
 m = len(Y)
 
-# Small debug print to show how many training examples.
+# Print the number of training examples for debugging purposes
 
 print('Total no of training examples (m) = %s \n' % (m))
 
 
-# Function portion of code. These are built to automate features.
+# Define the main class for generating models, training, testing, and predicting
 
 class GenModel:
-    # Establish empty data frames that get concated to after every for loop.
+    # Initialize empty dataframes to store results after each iteration
     TotalTraining = pd.DataFrame(columns=['Tr Predicted E', 'Tr Actual E'])
     TotalTesting = pd.DataFrame(columns=['Te Predicted E', 'Te Actual E'])
     Totalrmse = pd.DataFrame(columns=['Training RMSE', 'Testing RMSE'])
@@ -56,21 +56,22 @@ class GenModel:
     # TotalIndice = pd.DataFrame(columns=['Name'])
 
     def __init__(self, model, n=10, p=0):
+        # Run the loop for generating models and evaluating their performance
         for ModelN in range(n):
-            # Splitting training and testing data, random_state value for replicability.
+            # Split the dataset into training and testing sets, with random_state for replicability
             X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=ModelN)
             # Indice = pd.DataFrame([X_train.index.values, X_test.index.values, Y_train.index.values, Y_test.index.values], columns=['X_train Ind' + str(ModelN), 'X_test Ind' + str(ModelN), 'Y_train Ind' + str(ModelN), 'Y_test Ind' + str(ModelN)])
             # self.TotalIndice = pd.concat([self.TotalIndice, Indice], axis=1)
 
-            # This is a currently unused feature to scale data.
+            # Standardize the dataset (currently unused)
             scaler = StandardScaler()
             # X_train = scaler.fit_transform(X_train)
             # X_test = scaler.fit_transform(X_test)
 
-            # Fits your input model variable to training data.
+            # Train the model with the training dataset
             model.fit(X_train, Y_train)
 
-            # Training Array Maker
+            # Evaluate the model on the training dataset and calculate the RMSE
             TrGMprede = pd.DataFrame(model.predict(X_train), columns=['Tr Predicted E' + str(ModelN)])
             TrGMacte = pd.DataFrame(Y_train, columns=['Tr Actual E' + str(ModelN)])
             # TrGMacte = TrGMacte.reset_index(drop=True)  # Drop the index so that we can concat it, to create new
@@ -79,7 +80,7 @@ class GenModel:
             self.TotalTraining = pd.concat([self.TotalTraining, TrGM_actual_vs_predicted], axis=1)
             TrGMrmse = np.sqrt(mean_squared_error(TrGMprede, TrGMacte))
 
-            # Test Array Maker
+            # Evaluate the model on the testing dataset and calculate the RMSE
             TeGMprede = pd.DataFrame(model.predict(X_test), columns=['Te Predicted E' + str(ModelN)])
             TeGMacte = pd.DataFrame(Y_test, columns=['Te Actual E' + str(ModelN)])
             # TeGMacte = TeGMacte.reset_index(drop=True)  # Drop the index so that we can concat it, to create new
@@ -88,10 +89,10 @@ class GenModel:
             self.TotalTesting = pd.concat([self.TotalTesting, TeGM_actual_vs_predicted], axis=1)
             TeGMrmse = np.sqrt(mean_squared_error(TeGMprede, TeGMacte))
 
+            # Add RMSE values to the Totalrmse dataframe
             self.Totalrmse.loc[len(self.Totalrmse.index)] = [TrGMrmse, TeGMrmse]
 
-            # If the p variable is equal to 1 then it will also use the model to predict the data and concat to data
-            # frame.
+            # If p is 1, predict the data using the model and concatenate the predictions to the TotalPred dataframe
             if p == 1:
                 model.predict(XMat)
                 PredMat = pd.DataFrame(model.predict(XMat), columns=['Predicted E'])
@@ -100,9 +101,12 @@ class GenModel:
                 pass
             continue
 
-    # This function returns the arrays from the init function. Should maybe change function structure in future.
+    # This function returns the arrays from the init function
     def ReturnArray(self, model, p=0):
+        # Calculate the mean of the RMSE values and add it to the Totalrmse dataframe
         self.Totalrmse.loc['mean'] = self.Totalrmse.mean()
+
+        # Remove columns with NaN values in TotalTesting and TotalTraining dataframes
         self.TotalTesting.dropna(axis='columns', inplace=True)
         self.TotalTraining.dropna(axis='columns', inplace=True)
 
@@ -111,9 +115,10 @@ class GenModel:
         # print(self.TotalTesting)
         # print(self.Totalrmse)
 
-        # print model completion
+        # Print model completion message
         print(model, 'generation complete.')
-        # saving arrays for future use
+
+        # Save the generated arrays to CSV files
         isExist = os.path.exists('Models/' + model)
         if not isExist:
             # Create a new directory because it does not exist
@@ -122,7 +127,9 @@ class GenModel:
         self.TotalTesting.to_csv('Models/' + model + '/TestArray.csv', index=False)
         self.Totalrmse.to_csv('Models/' + model + '/RMSEArray.csv', index=False)
         print(model, 'arrays saved.')
-        self.Totalrmse.drop(self.Totalrmse.index[0:], inplace=True)  # EMPTY RMSE ARRAY
+
+        # Empty the RMSE array
+        self.Totalrmse.drop(self.Totalrmse.index[0:], inplace=True)
 
         # If the p variable is equal to 1 then it saves predictions to csv.
         if p == 1:
@@ -141,9 +148,10 @@ class TimerError(Exception):
     """A custom exception used to report errors in use of Timer class"""
 
 
-# This is the timer class that starts and stops timers for model comparison.
+
 # Should change function structure eventually to automate this into GenModel maybe.
 
+# Timer class definition
 class Timer:
 
     def __init__(self):

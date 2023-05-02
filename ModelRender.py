@@ -1,3 +1,4 @@
+# Import necessary libraries
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -8,16 +9,20 @@ import matplotlib.transforms as mtransforms
 from matplotlib.patches import Rectangle
 import warnings
 
+# Ignore warnings
 warnings.filterwarnings('ignore')
 
+# Define the list of models
 modelset = ('DTR', 'GPR', 'KRR', 'MLPR', 'OLS', 'RFR', 'RidgeCV', 'SVR')
 
 
-# Function portion of code. These are built to automate features.
-
+# Function to plot the predicted vs actual data for each model
 def plotdata(model):
+    # Read test and train data from CSV files
     testdata = pd.read_csv('Models/' + model + '/TestArray.csv')
     traindata = pd.read_csv('Models/' + model + '/TrainArray.csv')
+
+    # Create a scatter plot for test and train data
     fig, ax = plt.subplots()
 
     ax.scatter([testdata.iloc[:, 0]], [testdata.iloc[:, 1]], color='blue', marker='o', edgecolors='white', alpha=0.8)
@@ -36,9 +41,12 @@ def plotdata(model):
     plt.savefig('Models/' + model + '/TrainVSTest.png')
     plt.show()
 
-
+# Function to plot the RMSE values for each model
 def plotrmse(model):
+    # Read RMSE values from CSV file
     rmse = pd.read_csv('Models/' + model + '/RMSEArray.csv')
+
+    # Create a bar plot for RMSE values
     plt.bar([rmse.columns[0]], [rmse.iloc[0, 0]])
     plt.bar([rmse.columns[1]], [rmse.iloc[1, 0]])
     plt.ylim(0, 0.5)
@@ -60,10 +68,14 @@ def autormse():
     plt.savefig('Models/' + modelstring + '/RMSEBar.png')
     plt.show()
 
-
+# Function to plot the predicted values for material generation
 def plotpred(model):
+    # Read predicted data from CSV file
     preddata = pd.read_csv('Models/' + model + '/MatGenArray.csv')
+
+    # Create a scatter plot for predicted values
     fig, ax = plt.subplots()
+
     x = preddata.iloc[:, 0]
     y = preddata.iloc[:, 1]
     # ax.scatter([preddata.iloc[:, 0]], [preddata.iloc[:, 1]], color='blue', edgecolors='white', alpha=0.8)
@@ -79,22 +91,10 @@ def plotpred(model):
 # Calling functions portion of code. This should eventually be automated to request a model list
 # and iterate through that list with the functions you'd like.
 
-plotdata('DTR')
-plotdata('GPR')
-plotdata('KRR')
-plotdata('MLPR')
-plotdata('OLS')
-plotdata('RFR')
-plotdata('RidgeCV')
-plotdata('SVR')
+# Call the functions for each model in the modelset
+for model in modelset:
+    plotdata(model)
+    plotrmse(model)
 
-plotrmse('DTR')
-plotrmse('GPR')
-plotrmse('KRR')
-plotrmse('MLPR')
-plotrmse('OLS')
-plotrmse('RFR')
-plotrmse('RidgeCV')
-plotdata('SVR')
-
+# Call the plotpred function for a specific model ('RFR' in this case)
 plotpred('RFR')
