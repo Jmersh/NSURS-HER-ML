@@ -16,6 +16,15 @@ The NSURS-HER-ML project provides several features to make it easy for you to ge
 - Import descriptors from materials database
 - TPOT and Ludwig Auto-ML pipeline
 
+## Workflow
+
+- LearningModelGen: Generates models, predicts data and saves statistics to the Models folder.
+- MatGen: Generates materials to be predicted along with their descriptors.
+- TrainDataGen: Generates descriptors for the Training data.
+- ModelRender: Generates various plots based on the models.
+- TrainData: Data that is labeled with 'Energy' values, used to build models.
+- MatGenOutput: Materials that are outputted by MatGen to be predicted.
+
 ## To-Do
 
 We are continuously improving the NSURS-HER-ML project to make it more efficient and user-friendly. Some of the tasks we are currently working on include:
