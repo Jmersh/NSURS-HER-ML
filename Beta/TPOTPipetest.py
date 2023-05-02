@@ -22,7 +22,7 @@ def save_predictions_to_csv(predictions, output_file):
     result_df.to_csv(output_file, index=False)
 
 # Load the training data
-tpot_data = pd.read_csv('TrainData.csv', sep=',', index_col=0)
+tpot_data = pd.read_csv('../TrainData.csv', sep=',', index_col=0)
 tpot_data = tpot_data.drop(tpot_data.columns[[0, 2]], axis=1)
 features = tpot_data.drop('Energy', axis=1)
 
@@ -60,7 +60,7 @@ print(f"Training R^2 Score: {training_r2_score}")
 print(f"Testing R^2 Score: {testing_r2_score}")
 
 # Load the data to predict energy values measure the time taken
-predict_data = load_predict_data('MatGenOutput.csv')
+predict_data = load_predict_data('../MatGenOutput.csv')
 start_time = time.time()
 predictions = exported_pipeline.predict(predict_data)
 pred_time = time.time() - start_time

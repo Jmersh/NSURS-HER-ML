@@ -3,7 +3,7 @@ from tpot import TPOTRegressor
 from sklearn.model_selection import train_test_split
 
 # Load the dataset
-data = pd.read_csv("TrainData.csv", index_col=0)
+data = pd.read_csv("../TrainData.csv", index_col=0)
 
 # Separate the features and target
 X = data.drop(columns=["Metal Symbol", "X Symbol", "Energy"])

@@ -9,7 +9,7 @@ from xgboost import XGBRegressor
 from tpot.export_utils import set_param_recursive
 
 # NOTE: Make sure that the outcome column is labeled 'target' in the data file
-tpot_data = pd.read_csv('TrainData.csv', sep=',', index_col=0)
+tpot_data = pd.read_csv('../TrainData.csv', sep=',', index_col=0)
 tpot_data = tpot_data.drop(tpot_data.columns[[0, 2]], axis=1)
 features = tpot_data.drop('Energy', axis=1)
 
