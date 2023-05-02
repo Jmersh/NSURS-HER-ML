@@ -245,7 +245,7 @@ t.stop()
 
 # MLPR
 t.start()
-mlpr = MLPRegressor(random_state=1, max_iter=5000, solver='lbfgs')
+mlpr = MLPRegressor(random_state=1, max_iter=500000, solver='lbfgs')
 GenModel(mlpr, 1).ReturnArray("MLPR")
 t.stop()
 
@@ -257,3 +257,4 @@ t.stop()
 # graph of number of iterations vs accuracy
 # fix decision tree depth, maybe relate to RFR depth
 # fix perceptron, perhaps solver=lbfgs
+# =IF(ABS(B159)<=0.16,"Within 0.16 of 0","Outside 0.16 of 0")
