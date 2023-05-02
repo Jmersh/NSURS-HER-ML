@@ -46,6 +46,16 @@ You also need to have a Python IDE installed. Here are some popular options:
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Simplilearn](https://www.simplilearn.com/tutorials/python-tutorial/python-ide)
 
+## Abstract
+
+Abstract
+Hydrogen evolution reaction (HER) catalysts play a critical role in renewable energy technologies such as hydrogen production. Identifying novel catalysts with high efficiency and low cost is a significant challenge. In this study, we investigate the effectiveness of supervised machine learning techniques for screening HER catalysts. 
+
+We applied various machine learning models to predict the probability of a list of 300 transition metal borides, carbides, and nitrides being a highly efficient HER catalyst. Elemental descriptors that can be easily obtained by the periodic table for Metal (M) and carbon, nitrogen, boron (X) were primarily used. Materials with published Gibbs free energy of hydrogen adsorption (ΔGH*) values were utilized for our training data. We compared the different machine learning models based on root mean square error (RMSE), speed of model generation, and speed of model prediction. 
+
+Our results showed that the Random Forest Regression model produced the lowest testing RMSE and was chosen to examine the 300 materials, Out of which 29 materials were predicted to be high-performance HER catalysts. Our approach can efficiently identify promising HER catalysts with high accuracy, providing guidance for further experimental and theoretical investigations.
+
+
 ## Training Data
 
 The training data for this project includes Gibbs Free Energy values and names of materials used. Other descriptors are generated from the project. The data was sourced from the following publication:
