@@ -7,6 +7,9 @@ For use in undergraduate project titled
 
 "Screening of Highly Active Hydrogen Evolution Reaction Catalysts: Comparative Analysis of Typical Machine Learning Methods"
 
+You can read my paper and check out my presentation on this github as well.
+
+
 This project generates a CSV of materials, imports training data, builds models with the training data, compares the models, and predict materials.
 
 
@@ -20,15 +23,13 @@ Generates statistics on models
 
 Generates graphs for models
 
-Other cool stuff I am forgetting
+Imports descriptors from materials database
+
+TPOT and Ludwig Auto-ML pipeline
 
 
 
 To-Do:
-
-[ ] implement mp-api and extend descriptors to space group, lattice params, etc.
-
-[ ] Rename Github Project
 
 [ ] Check association values between descriptors
 
@@ -36,13 +37,8 @@ To-Do:
 
 [ ] Add more comments
 
-[ ] Automate final steps (screen predicted energy for value range)
-
 [ ] Add examples of what project can do
 
-[ ] Add project paper and presentation to Github
-
-[ ] Finish a ton of stuff
 
 
 
