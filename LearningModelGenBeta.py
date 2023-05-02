@@ -23,8 +23,12 @@ from inspect import signature
 from sklearn.pipeline import make_pipeline
 import time
 
+# Load csv files of training data and data you'd like to predict.
+
 TrainData = pd.read_csv('TrainData.csv', index_col=[0])
 MatGenData = pd.read_csv('MatGenOutput.csv', index_col=[0])
+
+# Choose which columns you'd like to use as your X and Y variables.
 
 X = TrainData.iloc[:, [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]]
 Y = TrainData.values[:, 22]
@@ -35,10 +39,15 @@ XMat = MatGenData.iloc[:, [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1
 # Y = TrainData.values[:, 23]
 m = len(Y)
 
+# Small debug print to show how many training examples.
+
 print('Total no of training examples (m) = %s \n' % (m))
 
 
+# Function portion of code. These are built to automate features.
+
 class GenModel:
+    # Establish empty data frames that get concated to after every for loop.
     TotalTraining = pd.DataFrame(columns=['Tr Predicted E', 'Tr Actual E'])
     TotalTesting = pd.DataFrame(columns=['Te Predicted E', 'Te Actual E'])
     Totalrmse = pd.DataFrame(columns=['Training RMSE', 'Testing RMSE'])
@@ -48,12 +57,17 @@ class GenModel:
 
     def __init__(self, model, n=10, p=0):
         for ModelN in range(n):
+            # Splitting training and testing data, random_state value for replicability.
             X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=ModelN)
             # Indice = pd.DataFrame([X_train.index.values, X_test.index.values, Y_train.index.values, Y_test.index.values], columns=['X_train Ind' + str(ModelN), 'X_test Ind' + str(ModelN), 'Y_train Ind' + str(ModelN), 'Y_test Ind' + str(ModelN)])
             # self.TotalIndice = pd.concat([self.TotalIndice, Indice], axis=1)
+
+            # This is a currently unused feature to scale data.
             scaler = StandardScaler()
             # X_train = scaler.fit_transform(X_train)
             # X_test = scaler.fit_transform(X_test)
+
+            # Fits your input model variable to training data.
             model.fit(X_train, Y_train)
 
             # Training Array Maker
@@ -75,6 +89,9 @@ class GenModel:
             TeGMrmse = np.sqrt(mean_squared_error(TeGMprede, TeGMacte))
 
             self.Totalrmse.loc[len(self.Totalrmse.index)] = [TrGMrmse, TeGMrmse]
+
+            # If the p variable is equal to 1 then it will also use the model to predict the data and concat to data
+            # frame.
             if p == 1:
                 model.predict(XMat)
                 PredMat = pd.DataFrame(model.predict(XMat), columns=['Predicted E'])
@@ -83,11 +100,13 @@ class GenModel:
                 pass
             continue
 
+    # This function returns the arrays from the init function. Should maybe change function structure in future.
     def ReturnArray(self, model, p=0):
         self.Totalrmse.loc['mean'] = self.Totalrmse.mean()
         self.TotalTesting.dropna(axis='columns', inplace=True)
         self.TotalTraining.dropna(axis='columns', inplace=True)
-        # printing arrays for debug
+
+        # This prints arrays for debuging
         # print(self.TotalTraining)
         # print(self.TotalTesting)
         # print(self.Totalrmse)
@@ -105,6 +124,7 @@ class GenModel:
         print(model, 'arrays saved.')
         self.Totalrmse.drop(self.Totalrmse.index[0:], inplace=True)  # EMPTY RMSE ARRAY
 
+        # If the p variable is equal to 1 then it saves predictions to csv.
         if p == 1:
             self.TotalPred.to_csv('Models/' + model + '/MatGenArray.csv', index=False)
             print(model, 'MatGen Array saved.')
@@ -120,6 +140,9 @@ class GenModel:
 class TimerError(Exception):
     """A custom exception used to report errors in use of Timer class"""
 
+
+# This is the timer class that starts and stops timers for model comparison.
+# Should change function structure eventually to automate this into GenModel maybe.
 
 class Timer:
 
@@ -147,6 +170,8 @@ class Timer:
 
 t = Timer()
 
+# This is the command portion of the script where you start timers, gen models, return arrays etc.
+# You also establish model parameters here.
 
 # RidgeCV
 t.start()
@@ -220,7 +245,7 @@ t.stop()
 
 # MLPR
 t.start()
-mlpr = MLPRegressor(random_state=1, max_iter=5000, solver='lbfgs')
+mlpr = MLPRegressor(random_state=1, max_iter=500000, solver='lbfgs')
 GenModel(mlpr, 1).ReturnArray("MLPR")
 t.stop()
 
@@ -232,3 +257,4 @@ t.stop()
 # graph of number of iterations vs accuracy
 # fix decision tree depth, maybe relate to RFR depth
 # fix perceptron, perhaps solver=lbfgs
+# =IF(ABS(B159)<=0.16,"Within 0.16 of 0","Outside 0.16 of 0")
