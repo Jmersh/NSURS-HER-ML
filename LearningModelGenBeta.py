@@ -1,27 +1,20 @@
 import os
+import time
 
 import numpy as np
 import pandas as pd
-import sklearn
-from IPython.core.display_functions import display
-from sklearn.linear_model import RidgeCV, LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.svm import SVR
-from sklearn.metrics import r2_score, mean_squared_error
-import seaborn as sns
 from sklearn import svm
-import matplotlib.pyplot as plt
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
-from sklearn import linear_model
-from sklearn.kernel_ridge import KernelRidge
 from sklearn import tree
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
+from sklearn.kernel_ridge import KernelRidge
+from sklearn.linear_model import RidgeCV, LinearRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
-from inspect import signature
 from sklearn.pipeline import make_pipeline
-import time
+from sklearn.preprocessing import StandardScaler
 
 # Load training data and data to be predicted from csv files
 
@@ -41,7 +34,7 @@ m = len(Y)
 
 # Print the number of training examples for debugging purposes
 
-print('Total no of training examples (m) = %s \n' % (m))
+print('Total no of training examples (m) = %s \n' % m)
 
 
 # Define the main class for generating models, training, testing, and predicting
@@ -60,11 +53,13 @@ class GenModel:
         for ModelN in range(n):
             # Split the dataset into training and testing sets, with random_state for replicability
             X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=ModelN)
-            # Indice = pd.DataFrame([X_train.index.values, X_test.index.values, Y_train.index.values, Y_test.index.values], columns=['X_train Ind' + str(ModelN), 'X_test Ind' + str(ModelN), 'Y_train Ind' + str(ModelN), 'Y_test Ind' + str(ModelN)])
-            # self.TotalIndice = pd.concat([self.TotalIndice, Indice], axis=1)
+            # Indice = pd.DataFrame([X_train.index.values, X_test.index.values, Y_train.index.values,
+            # Y_test.index.values], columns=['X_train Ind' + str(ModelN), 'X_test Ind' + str(ModelN), 'Y_train Ind' +
+            # str(ModelN), 'Y_test Ind' + str(ModelN)]) self.TotalIndice = pd.concat([self.TotalIndice, Indice],
+            # axis=1)
 
             # Standardize the dataset (currently unused)
-            scaler = StandardScaler()
+            StandardScaler()
             # X_train = scaler.fit_transform(X_train)
             # X_test = scaler.fit_transform(X_test)
 
@@ -76,6 +71,7 @@ class GenModel:
             TrGMacte = pd.DataFrame(Y_train, columns=['Tr Actual E' + str(ModelN)])
             # TrGMacte = TrGMacte.reset_index(drop=True)  # Drop the index so that we can concat it, to create new
             # dataframe
+
             TrGM_actual_vs_predicted = pd.concat([TrGMacte, TrGMprede], axis=1)
             self.TotalTraining = pd.concat([self.TotalTraining, TrGM_actual_vs_predicted], axis=1)
             TrGMrmse = np.sqrt(mean_squared_error(TrGMprede, TrGMacte))
@@ -85,6 +81,7 @@ class GenModel:
             TeGMacte = pd.DataFrame(Y_test, columns=['Te Actual E' + str(ModelN)])
             # TeGMacte = TeGMacte.reset_index(drop=True)  # Drop the index so that we can concat it, to create new
             # dataframe
+
             TeGM_actual_vs_predicted = pd.concat([TeGMacte, TeGMprede], axis=1)
             self.TotalTesting = pd.concat([self.TotalTesting, TeGM_actual_vs_predicted], axis=1)
             TeGMrmse = np.sqrt(mean_squared_error(TeGMprede, TeGMacte))
@@ -148,8 +145,7 @@ class TimerError(Exception):
     """A custom exception used to report errors in use of Timer class"""
 
 
-
-# Should change function structure eventually to automate this into GenModel maybe.
+# Should change function structure eventually to automate this into GenModel, maybe.
 
 # Timer class definition
 class Timer:
