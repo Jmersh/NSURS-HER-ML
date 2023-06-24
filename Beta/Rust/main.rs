@@ -15,7 +15,7 @@ use std::io::Write;
 // Turn Rust vector-slices with samples into a matrix
 fn main() -> Result<(), Box<dyn Error>> {
     // Read the dataset from a CSV file
-    let file = File::open(r"C:\Users\Sudo\IdeaProjects\NSURS-HER-Rust\target\TrainData.csv")?;
+    let file = File::open(r"TrainData.csv)?;
     let mut reader = Reader::from_reader(file);
 
     // Initialize a vector to store the rows of the dataset
