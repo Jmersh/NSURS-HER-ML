@@ -1,0 +1,17 @@
+[package]
+name = "RustHER2"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+csv = "*"
+rand = "*"
+ndarray = "*"
+num-traits = "*"
+smartcore = { version = "*", features=["ndarray-bindings"]}
+
+[profile.release]
+opt-level = 3
+

@@ -13,7 +13,7 @@ y = data["Energy"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
 
 # Create an instance of TPOTRegressor and specify parameters
-tpot = TPOTRegressor(generations=20, population_size=500, verbosity=2, random_state=42, n_jobs=-1)
+tpot = TPOTRegressor(generations=200, population_size=500, verbosity=2, random_state=42, n_jobs=-1, periodic_checkpoint_folder='Beta//TPOTCheckpoint')
 
 # Fit the model
 tpot.fit(X_train, y_train)

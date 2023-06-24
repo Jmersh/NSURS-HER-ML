@@ -32,7 +32,7 @@ training_features, testing_features, training_target, testing_target = \
 exported_pipeline = make_pipeline(
     PolynomialFeatures(degree=2, include_bias=False, interaction_only=False),
     OneHotEncoder(minimum_fraction=0.05, sparse=False, threshold=10),
-    StackingEstimator(estimator=XGBRegressor(learning_rate=0.01, max_depth=4, min_child_weight=11, n_estimators=100, n_jobs=1, objective="reg:squarederror", subsample=0.25, verbosity=0)),
+    StackingEstimator(estimator=XGBRegressor(learning_rate=0.01, max_depth=4, min_child_weight=11, n_estimators=100, n_jobs=-1, objective="reg:squarederror", subsample=0.25, verbosity=0)),
     GradientBoostingRegressor(alpha=0.9, learning_rate=0.1, loss="huber", max_depth=10, max_features=0.4, min_samples_leaf=20, min_samples_split=17, n_estimators=100, subsample=0.9500000000000001)
 )
 set_param_recursive(exported_pipeline.steps, 'random_state', 42)
